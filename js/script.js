@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var menuBtn=$('#menu-btn');
+ /**   var menuBtn=$('#menu-btn');
     var menu=$('#menu');
     var sideNav=$('#side-nav');
     menuBtn.click(function(){
@@ -14,7 +14,17 @@ $(document).ready(function(){
             sideNav.css('right','-250px');
             menu.attr('src','Images/menu.png');
         }
-    });
+     });**/
+     var nav = $('nav');
+     var toggle=$(".toggle-btn");
+
+     toggle.click(function(){
+            nav.toggleClass('active');
+     });
+
+
+     /** FOOTER YEAR  **/
+
     var date=new Date().getFullYear();
     $('#year').text(date);
 
@@ -26,7 +36,7 @@ $(document).ready(function(){
        defaults:{duration:1},
     })
     tl.from('.logo',{x:-50, opacity:0,ease:"elastic",duration:2})
-    .from('#menu-btn',{opacity:0,x:20},"-=0.5")
+    .from('.toggle-btn',{opacity:0,x:20},"-=0.5")
     .from('.banner-text h1',{opacity:0,y:30,ease:"bounce"},"0.5")
     .from('.banner-text p',{y:-30,opacity:0,ease:"bounce"},"0.5")
     .from('.banner-btn',{opacity:0,ease:"bounce.out",y:-10},"-=0.5")
