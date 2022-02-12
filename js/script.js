@@ -1,20 +1,7 @@
 $(document).ready(function(){
- /**   var menuBtn=$('#menu-btn');
-    var menu=$('#menu');
-    var sideNav=$('#side-nav');
-    menuBtn.click(function(){
-    var rightside=sideNav.css('right');
-       if(rightside=='-250px')
-       {
-           sideNav.css('right','0px');
-           menu.attr('src','Images/close.png');
-       }
-        else
-        {
-            sideNav.css('right','-250px');
-            menu.attr('src','Images/menu.png');
-        }
-     });**/
+
+        /** Navbar **/
+
      var nav = $('nav');
      var toggle=$(".toggle-btn");
 
@@ -32,179 +19,93 @@ $(document).ready(function(){
 
     gsap.registerPlugin(ScrollTrigger,ScrollToPlugin)
 
+    var titles=gsap.utils.toArray([$(".title-text h1"),$(".title-text p")]);
+
+    titles.forEach((text,i) => {
+        ScrollTrigger.create({
+            trigger:text,
+            toggleClass:"active",
+            start:"top 90%",
+            end:"top 10%",
+            markers:false
+        });
+    });
+
+    var products=gsap.utils.toArray($('.single-product'));
+
+    products.forEach((product,i) => {
+        ScrollTrigger.create({
+            trigger:product,
+            toggleClass:"active",
+            start:"top 70%",
+            end:"bottom 5%",
+            markers:false,
+        });
+    });
+
     var tl=gsap.timeline({
-       defaults:{duration:1},
-    })
-    tl.from('.logo',{x:-50, opacity:0,ease:"elastic",duration:2})
-    .from('.toggle-btn',{opacity:0,x:20},"-=0.5")
-    .from('.banner-text h1',{opacity:0,y:30,ease:"bounce"},"0.5")
-    .from('.banner-text p',{y:-30,opacity:0,ease:"bounce"},"0.5")
-    .from('.banner-btn',{opacity:0,ease:"bounce.out",y:-10},"-=0.5")
-    .from("#titlefeatures",
+        defaults:{duration:1},
+     });
+
+    tl.from('.logo',{y:-50,ease:"elastic",scale:0})
+    .from('.navbar',{x:200,rotation:360,ease:"elastic"})
+    .from(".banner-text h1",{y:100,opacity:0,ease:"power2.in"})
+    .from(".banner-text p",{y:-100,opacity:0,ease:"bounce"})
+    .from(".showcase",
         {
             opacity:0,
-            y:-50,
-            ease:"bounce",
+            y:50,
+            stagger:1,
             scrollTrigger:{
-                trigger:"#feature",
-                start:"top 90%",
+                trigger:".feature",
+                start:"top 70%",
                 end:"bottom 90%",
                 markers:false,
-                scrub:1
-                }
-        })
-    .addLabel('features',"-=0.5")
-         .from(".showcase",
-        {
-            opacity:0,
-            x:-50,
-            stagger:1,
-            scrollTrigger:{
-                trigger:"#feature",
-                start:"top 50%",
-                end:"bottom 95%",
-                markers:false,
-                scrub:1
-                }
-        },"features")
-      .from(".feature-img",
-        {
-            opacity:0,
-            x:100,
-            scale:0.5,
-            scrollTrigger:{
-                trigger:"#feature",
-                start:"top 30%",
-                end:"bottom 95%",
-                markers:false,
-                scrub:1,
-                }
-        },"features")
-        .from("#titleproducts",
-        {
-            opacity:0,
-            y:-50,
-            ease:"bounce",
-            duration:2,
-            scrollTrigger:{
-                trigger:"#products",
-                start:"top 90%",
-                end:"bottom 30%",
-                markers:false,
-                scrub: 1
-                }
-        })
-        .from(".single-product",
-        {
-            opacity:0,
-            scale:0.1,
-            stagger:{
-                amount:1,
-                from:"right",
-                grid:"auto",
-                ease:"elastic",
-            },
-            scrollTrigger:{
-                trigger:".product-box",
-                start:"top 90%",
-                end:"+=250",
-                toggleActions:"play reverse restart reverse",
-                markers:false,
                 scrub:1,
                 }
         })
-        .from("#titletestimonials",{
-            scrollTrigger:{
-                trigger:"#testimonials",
-                start:"top 80%",
-                end:"center 80%",
-                markers:false,
-                toggleActions:"play pause resume reverse",
-                scrub: 1
-                },
-            opacity:0,
-            y:-50,
-            ease:"bounce",
-        })
-        .from(".testimonial-col",
-        {
-            opacity:0,
-            x:100,
-            rotate:45,
-            stagger:1,
-            scale:0.1,
-            scrollTrigger:
-                {
-                    trigger:".testimonial-row",
-                    start:"top 80%",
-                    end:"bottom 90%",
-                    markers:false,
-                    toggleActions:"play pause resume reverse",
-                    scrub:1
-                },
-        })
-        .from('#titlecontact',
+    .from(".feature-img img",
+    {
+        borderRadius:"50%",
+        scale:0,
+        x:150,
+        toggleActions:"play reverse restart  none",
+        scrollTrigger:{
+            trigger:".feature-img",
+            start:"top 65%",
+            end:"bottom 75%",
+            markers:false,
+            scrub:1,
+            }
+    })
+    .from(".swiper-slide",
+    {
+        x:-50,
+        opacity:0,
+        stagger:{
+            each:0.5,
+            from:"left",
+            
+        },
+        scrollTrigger:
             {
-                scrollTrigger:{
-                trigger:"#footer",
-                start:"top 80%",
-                end:"center 80%",
+                trigger:".swiper-container",
+                start:"top 50%",
+                end:"70% 90%",
                 markers:false,
-                toggleActions:"play pause resume reverse",
-                scrub: 1
-                },
-            opacity:0,
-            y:-50,
-            ease:"bounce",
-            })
-         .from(".footer-left",
-             {
-                scrollTrigger:{
-                        trigger:"#footer",
-                        start:"top 80%",
-                        end:"center 80%",
-                        markers:false,
-                        toggleActions:"play pause resume reverse",
-                        scrub: 1
-                },
-                x:-200,
-                opacity:0,
-         })
-          .from(".footer-right",
-             {
-                scrollTrigger:{
-                        trigger:"#footer",
-                        start:"top 80%",
-                        end:"center 80%",
-                        markers:false,
-                        toggleActions:"play pause resume reverse",
-                        scrub: 1
-                },
-                x:200,
-                opacity:0,
-         })
-        .from('.button',
-        {
-             scrollTrigger:{
-                    trigger:".footer-row",
-                    start:"top 80%",
-                    end:"top 70%",
-                    markers:false,
-                    toggleActions:"play pause resume reverse",
-                    scrub: 1
-                },
-            x:-250,
-            opacity:0,
-            rotate:360,
-            stagger:1,
-            duration:3
-        })
+                toggleActions:"play pause reverse reset",
+                scrub:1
+            },
+    })
 
     /**GSAP ScrollTo**/
 
     $(".product-btn").click(function(){
         gsap.to(window,{duration:4,scrollTo:'#products'});
     });
+
+    /** Swiper **/
+
     var swiper = new Swiper(".swiper-container", {
         effect: "coverflow",
         grabCursor: true,
