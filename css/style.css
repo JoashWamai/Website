@@ -10,7 +10,7 @@
 /*** Custom Variable ***/
 
 :root{
-	--purple:#800080;
+	--main-color:purple;
 }
 
 /*** ScrollBar ***/
@@ -27,7 +27,7 @@
 }
 ::-webkit-scrollbar-thumb
 {
-	background-color: var(--purple);
+	background-color: var(--main-color);
 	border-radius:100vw;
 	height: 15px;
 	border: 1px solid #ccc;
@@ -37,7 +37,7 @@
 
 #banner
 {
-	background: linear-gradient(rgba(0,0,0,0.5),var(--purple)),url(front.jpeg);
+	background: linear-gradient(rgba(0,0,0,0.5),var(--main-color)),url(front.jpeg);
 	background-size:cover;
 	background-position:center;
 	height:100vh;
@@ -56,7 +56,7 @@
 .banner-text
 {
 	color:white;
-	padding-top:140px;
+	padding-top:200px;
 	text-align:center;
 	overflow: hidden;
 }
@@ -145,7 +145,7 @@ nav .navbar
 .navbar .toggle-btn
 {
 	font-size: 30px;
-	color:var(--purple);
+	color:var(--main-color);
 	z-index: 100;
 	transform: rotate(-225deg) !important;
 	transition: all 0.5s linear;
@@ -173,17 +173,94 @@ nav.active .toggle-btn
 .navbar span a i
 {
 	font-size: 16px;
-	color:var(--purple);
+	color:var(--main-color);
 	transform: rotate(calc(var(--i) * (360deg / -8)));
 	transition: 0.2s;
 }
 .navbar span a:hover 
 {
-	background: var(--purple);
+	background: var(--main-color);
 }
 .navbar span a:hover i
 {
 	color: #fff;
+}
+.pallet-container
+{
+	width: 200px;
+	height: 200px;
+	position: fixed;
+	top:25px;
+	left:50%;
+	transform: translateX(-50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;	
+}
+.color-pallet
+{
+	width:50px;
+	height: 50px;
+	background: #fff;
+	border-radius: 50%;
+	box-shadow: 0 0 20px rgba(0,0,0,0.2);
+	z-index: 101;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.color-pallet a i.fa
+{
+	color: var(---main-color);
+	font-size: 20px;
+}
+.pallet-container span
+{
+	position: absolute;
+	transform-origin: 100px;
+    left:0;
+    transition: 0.5s;
+    transition-delay:calc(0.1s * var(--i));
+    transform: rotate(0deg) translateX(80px);
+}
+.pallet-container.active span
+{
+	transform: rotate(calc(360deg / 5 * var(--i)));
+}
+.pallet-container span 
+{
+	width:40px;
+	height: 40px;
+	border-radius: 50%;
+	box-shadow: 0 0 20px rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+.pallet-container span.active
+{
+	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9),
+				0 0 0 4px var(--main-color);
+}
+.pallet-container span.blue
+{
+	background: #0000ff;
+}
+.pallet-container span.purple
+{
+	background: purple;
+}
+.pallet-container span.red
+{
+	background: #ff0000;
+}
+.pallet-container span.green
+{
+	background: #00ff00;
+}
+.pallet-container span.orange
+{
+	background: #ffa500;
 }
 
 /** Responsive Homepage **/
@@ -221,6 +298,12 @@ nav.active .toggle-btn
 	{
 		width: 75px;
 		height: 75px;
+	}
+	.color-pallet
+	{
+		height: 30px;
+		width: 30px;
+		font-size: 15px;
 	}
 }
 /*--Titles--*/
@@ -260,7 +343,7 @@ nav.active .toggle-btn
 {
 	font-size: 18px;
 	font-weight: 800;
-	color:var(--purple);
+	color:var(--main-color);
 }
 .title-text p::before,
 .title-text h1::before
@@ -287,7 +370,7 @@ nav.active .toggle-btn
 }
 .title-text p::before
 {
-	background: var(--purple);
+	background: var(--main-color);
 }
 
 /*--Feature--*/
@@ -328,7 +411,7 @@ nav.active .toggle-btn
 	text-align:left;
 	margin-bottom:10px;
 	font-weight:100;
-	color:purple;
+	color:var(--main-color);
 }
 .feature-desc
 {
@@ -343,8 +426,8 @@ nav.active .toggle-btn
 	font-size:30px;
 	line-height:50px;
 	border-radius:8px;
-	color:var(--purple);
-	border:1px solid var(--purple);
+	color:var(--main-color);
+	border:1px solid var(--main-color);
 }
 .feature-text
 {
@@ -444,7 +527,7 @@ nav.active .toggle-btn
 	top:0;
 	border-radius:7px;
 	cursor:pointer;
-	background:linear-gradient(rgba(0,0,0,0.5),var(--purple));
+	background:linear-gradient(rgba(0,0,0,0.5),var(--main-color));
 	opacity:0;
 	transition:1s;
 }
@@ -589,7 +672,7 @@ hr
 }
 .Testimonial-box .details h3
 {
-	color:blue;
+	color:var(--main-color);
 	font-size:25px;
 	font-weight:400px;
 	letter-spacing: 1px;
@@ -655,7 +738,7 @@ hr
 .footer-left .fa,.footer-right .fa
 {
 	font-size:20px;
-	color:var(--purple);
+	color:var(--main-color);
 	margin:10px;
 }
 .social-links
@@ -685,14 +768,14 @@ hr
 {
 	display:inline-block;
 	border-radius:50%;
-	border:1px solid var(--purple);
+	border:1px solid var(--main-color);
 	height:40px;
 	width:40px;
 	box-sizing:border-box;
 	line-height:60px;
 	text-align:center;
 	transition: all 0.5s ease-out;
-	color:var(--purple);
+	color:var(--main-color);
 }
 .wrapper .button .icon i
 {
@@ -719,7 +802,7 @@ hr
 }
 .wrapper .button:nth-child(3):hover .icon 
 {
-	background:linear-gradient(125deg,red,var(--purple));
+	background:linear-gradient(45deg,red ,purple);
 	color:#fff;
 }
 .wrapper .button:nth-child(4):hover .icon 
@@ -742,7 +825,7 @@ hr
 }	
 .wrapper .button:nth-child(3):hover span
 {
-	color:var(--purple);
+	color:purple;
 }	
 .wrapper .button:nth-child(4):hover span
 {

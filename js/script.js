@@ -9,6 +9,25 @@ $(document).ready(function(){
             nav.toggleClass('active');
      });
 
+        /** COLOR PALLET **/
+
+    var color=$('.color-pallet');
+    var pallet=$('.pallet-container');
+
+    color.click(function(){
+        pallet.toggleClass('active');
+     });
+     var colors=$('.color');
+
+
+        colors.each(function(){
+            $(this).click(function(){
+                seletectedcolor=$(this).attr('class').split(" ").pop();
+                console.log(seletectedcolor);
+                //if ($(this).hasClass('active')?$(this).removeClass('active'):$(this).addClass('active'))
+                $(":root").css("--main-color",seletectedcolor);
+            });
+        });
 
      /** FOOTER YEAR  **/
 
